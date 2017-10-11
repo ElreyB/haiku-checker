@@ -44,6 +44,8 @@ describe ('Haiku', function(){
   });
 
   it('should return number of syllable for words with `th`', function() {
-    expect(haiku.doubleConsonant("the")).toEqual(1)
+    haiku.doubleConsonant("the")
+    expect(haiku.countTotal).toEqual(1)
   });
+
 });
