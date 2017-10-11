@@ -43,21 +43,4 @@ export class Haiku{
       }
     }
   }
-
-  doubleConsonant(word) {
-    let letters = word.split("");
-    let consPairArray = [];
-
-    for(var i = 0; i < letters.length-1; i++){
-      if (letters[i].match(/[^aeiou]/gi) && letters[i+1].match(/[^aeiou]/gi)){
-        consPairArray.push(letters[i] + letters[i +1]);
-        this.countTotal += 2;
-      }
-    }
-    // consPairArray.map(function(pair){
-    //   if (pair == ("sh") || pair == ("th") || pair == ("ph") || pair == ("ch") || pair == ("wh")) {
-    //     this.countTotal = 1;
-    //   }
-    // });
-  }
 }
