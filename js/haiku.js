@@ -13,6 +13,7 @@ export class Haiku{
     this.vowelCount(word);
     this.silenceCheck(word);
     this.doubleVowel(word);
+    this.doubleConsonant(word);
     return this.countTotal;
   }
 
@@ -33,13 +34,15 @@ export class Haiku{
     let words = line.split(" ");
     let that = this;
     words.forEach(function(word){
-      if (that.syllablesByVowels(word) == 0){
-        count = 1
-        count += that.countTotal;
-      }else{
         that.syllablesByVowels(word);
         count += that.countTotal;
-      }
+      // if (that.syllablesByVowels(word) == 0){
+      //   count = 1
+      //   count += that.countTotal;
+      // }else{
+      //   that.syllablesByVowels(word);
+      //   count += that.countTotal;
+      // }
 
     });
     return count;
@@ -61,7 +64,7 @@ export class Haiku{
    for(var i = 0; i < letters.length-1; i++){
      if (letters[i].match(/[^aeiou]/gi) && letters[i+1].match(/[^aeiou]/gi)){
        consPairArray.push(letters[i] + letters[i +1]);
-       that.countTotal += 2;
+      //  that.countTotal += 2;
      }
    }
 

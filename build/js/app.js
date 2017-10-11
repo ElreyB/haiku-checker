@@ -29,6 +29,7 @@ var Haiku = exports.Haiku = function () {
       this.vowelCount(word);
       this.silenceCheck(word);
       this.doubleVowel(word);
+      this.doubleConsonant(word);
       return this.countTotal;
     }
   }, {
@@ -51,13 +52,15 @@ var Haiku = exports.Haiku = function () {
       var words = line.split(" ");
       var that = this;
       words.forEach(function (word) {
-        if (that.syllablesByVowels(word) == 0) {
-          count = 1;
-          count += that.countTotal;
-        } else {
-          that.syllablesByVowels(word);
-          count += that.countTotal;
-        }
+        that.syllablesByVowels(word);
+        count += that.countTotal;
+        // if (that.syllablesByVowels(word) == 0){
+        //   count = 1
+        //   count += that.countTotal;
+        // }else{
+        //   that.syllablesByVowels(word);
+        //   count += that.countTotal;
+        // }
       });
       return count;
     }
@@ -80,7 +83,7 @@ var Haiku = exports.Haiku = function () {
       for (var i = 0; i < letters.length - 1; i++) {
         if (letters[i].match(/[^aeiou]/gi) && letters[i + 1].match(/[^aeiou]/gi)) {
           consPairArray.push(letters[i] + letters[i + 1]);
-          that.countTotal += 2;
+          //  that.countTotal += 2;
         }
       }
 
@@ -132,7 +135,7 @@ $(document).ready(function () {
       syllCount.push(line1, line2, line3);
     }
 
-    if (syllCount == [5, 7, 5]) {
+    if (syllCount.toString() === [5, 7, 5].toString()) {
       $(".final-result").text("Horray!");
     } else {
       $(".final-result").text("Boooooooooooooo!");
