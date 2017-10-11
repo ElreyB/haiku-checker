@@ -4,10 +4,11 @@ import { Haiku } from './../js/haiku.js';
 describe ('Haiku', function(){
   let haiku;
   let poem;
-
+  let line;
   beforeEach(function(){
     haiku = new Haiku()
     poem = "An old silent pond\nA frog jumps into the pond\nsplash! Silence again"
+    line = "An old silent pond"
   });
 
   it('should return false if poem has does not have three lines', function(){
@@ -38,7 +39,11 @@ describe ('Haiku', function(){
     expect(haiku.countTotal).toEqual(2)
   });
 
+  it('should return syllable count for a line', function(){
+    expect(haiku.lineCount(line)).toEqual(5)
+  });
 
-
-
+  it('should return number of syllable for words with `th`', function() {
+    expect(haiku.doubleConsonant("the")).toEqual(1)
+  });
 });
