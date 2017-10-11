@@ -30,8 +30,11 @@ describe ('Haiku', function(){
     expect(haiku.countTotal).toEqual(2)
   });
 
-  // it('should return number of silent vowels in word.', function(){
-  //   expect(haiku.silenceCheck("outer")).toEqual(1)
-  // });
+  it('should return number of silent vowels in word.', function(){
+    haiku.vowelCount("outer")
+    haiku.silenceCheck("outer")
+    haiku.doubleVowel("outer")
+    expect(haiku.countTotal).toEqual(2)
+  });
 
 });

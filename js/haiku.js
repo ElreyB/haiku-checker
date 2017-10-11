@@ -26,16 +26,15 @@ export class Haiku{
       this.countTotal -= 1;
       letters.pop();
     }
-    //
-    // for(var i = 0; i < letters.length; i++){
-    //   for(var x = 1; x < letters.length; x++){
-    //     if (letters[i].match(/[aeiou]/gi) && letters[x].match(/[aeiou]/gi)){
-    //       silentCount += 1;
-    //     }
-    //   }
-    // }
-    // return silentCount;
+  }
+
+  doubleVowel(word) {
+    let letters = word.split("");
+
+    for(var i = 0; i < letters.length; i++){
+      if (letters[i].match(/[aeiou]/gi) && letters[i+1].match(/[aeiou]/gi)){
+        this.countTotal -= 1;
+      }
+    }
   }
 }
-
-// exports.haikuModule = Haiku;
