@@ -19,4 +19,8 @@ describe ('Haiku', function(){
     expect(haiku.lineCheck(poem)).toEqual(true)
   });
 
+  it('should return the number of vowels in a word.', function(){
+    expect(haiku.vowelCount("silent")).toEqual(2);
+  });
+
 });
