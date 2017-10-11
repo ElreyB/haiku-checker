@@ -1,5 +1,5 @@
-// import { Haiku } from './../js/haiku.js';
-var Haiku = require('./../js/haiku.js').haikuModule;
+import { Haiku } from './../js/haiku.js';
+// var Haiku = require('./../js/haiku.js').haikuModule;
 
 
 describe ('Haiku', function(){
@@ -20,7 +20,18 @@ describe ('Haiku', function(){
   });
 
   it('should return the number of vowels in a word.', function(){
-    expect(haiku.vowelCount("silent")).toEqual(2);
+    haiku.vowelCount("silent")
+    expect(haiku.countTotal).toEqual(2)
   });
+
+  it('should return number of silent vowels in word.', function(){
+    haiku.vowelCount("silence")
+    haiku.silenceCheck("silence")
+    expect(haiku.countTotal).toEqual(2)
+  });
+
+  // it('should return number of silent vowels in word.', function(){
+  //   expect(haiku.silenceCheck("outer")).toEqual(1)
+  // });
 
 });
