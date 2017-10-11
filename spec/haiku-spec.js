@@ -25,15 +25,17 @@ describe ('Haiku', function(){
   });
 
   it('should return number of silent vowels in word.', function(){
-    haiku.vowelCount("silence")
-    haiku.silenceCheck("silence")
+    haiku.syllablesByVowels("silent")
     expect(haiku.countTotal).toEqual(2)
   });
 
   it('should return number of silent vowels in word.', function(){
-    haiku.vowelCount("outer")
-    haiku.silenceCheck("outer")
-    haiku.doubleVowel("outer")
+    haiku.syllablesByVowels("outer")
+    expect(haiku.countTotal).toEqual(2)
+  });
+
+  it('should return number of silent vowels in word.', function(){
+    haiku.syllablesByVowels("silence")
     expect(haiku.countTotal).toEqual(2)
   });
 

@@ -8,6 +8,12 @@ export class Haiku{
     return lines.length === 3;
   }
 
+  syllablesByVowels(word){
+    this.vowelCount(word);
+    this.silenceCheck(word);
+    this.doubleVowel(word);
+  }
+
   vowelCount(word) {
     let letters = word.split("");
     let vowels = 0;
@@ -31,7 +37,7 @@ export class Haiku{
   doubleVowel(word) {
     let letters = word.split("");
 
-    for(var i = 0; i < letters.length; i++){
+    for(var i = 0; i < letters.length-1; i++){
       if (letters[i].match(/[aeiou]/gi) && letters[i+1].match(/[aeiou]/gi)){
         this.countTotal -= 1;
       }
