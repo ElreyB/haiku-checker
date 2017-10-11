@@ -39,4 +39,15 @@ describe ('Haiku', function(){
     expect(haiku.countTotal).toEqual(2)
   });
 
+  it('should return the count Total by checking consonant pairs with the exception of digraphs.', function(){
+    haiku.doubleConsonant("happen")
+    expect(haiku.countTotal).toEqual(2)
+  });
+
+  // it('should return the count Total by checking consonant pairs with the exception of digraphs.', function(){
+  //   haiku.doubleConsonant("which")
+  //   expect(haiku.countTotal).toEqual(1)
+  // });
+
+
 });
