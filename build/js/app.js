@@ -135,7 +135,7 @@ $(document).ready(function () {
   $("#check-poem").submit(function (e) {
     e.preventDefault();
 
-    var poemInput = $("#poem").val().toLowerCase();
+    var poemInput = $("#poem").val().toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
     var haiku = new _haiku.Haiku();
     var syllCount = [];
 
