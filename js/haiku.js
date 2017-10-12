@@ -83,4 +83,10 @@ export class Haiku{
       }
     }
   }
+
+//   let word = "otter";
+//
+// let doubleVowels = (word.match(/[aeiouy]{2}/gi) || []).length;
+//
+// this.countTotal -= doubleVowels;
 }

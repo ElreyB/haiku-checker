@@ -103,6 +103,13 @@ var Haiku = exports.Haiku = function () {
         }
       }
     }
+
+    //   let word = "otter";
+    //
+    // let doubleVowels = (word.match(/[aeiouy]{2}/gi) || []).length;
+    //
+    // this.countTotal -= doubleVowels;
+
   }]);
 
   return Haiku;
