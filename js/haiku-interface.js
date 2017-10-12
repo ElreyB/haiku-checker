@@ -35,3 +35,7 @@ $(document).ready(function(){
 // An old silent pond
 // A frog jumps into the pond
 // Splash! Silence again
+
+// I will great the mist
+// courteously with a smile
+// i can do no more

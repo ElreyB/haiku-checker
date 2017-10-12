@@ -96,13 +96,23 @@ var Haiku = exports.Haiku = function () {
   }, {
     key: "doubleVowel",
     value: function doubleVowel(word) {
-      var letters = word.split("");
-      for (var i = 0; i < letters.length - 1; i++) {
-        if (letters[i].match(/[aeiouy]/gi) && letters[i + 1].match(/[aeiouy]/gi)) {
-          this.countTotal -= 1;
-        }
+      if (word.match(/[aeiouy]{3}/gi)) {
+        var tripleVowels = word.match(/[aeiouy]{3}/gi);
+        word = word.replace(tripleVowels, "");
+        this.countTotal -= 2;
+      } else if (word.match(/[aeiouy]{2}/gi)) {
+        this.countTotal -= 1;
       }
     }
+
+    //   let letters = word.split("");
+    //   for(var i = 0; i < letters.length-1; i++){
+    //     if ()
+    //     if (letters[i].match(/[aeiouy]/gi) && letters[i+1].match(/[aeiouy]/gi)){
+    //       this.countTotal -= 1;
+    //     }
+    //   }
+    // }
 
     //   let word = "otter";
     //
@@ -153,5 +163,9 @@ $(document).ready(function () {
 // An old silent pond
 // A frog jumps into the pond
 // Splash! Silence again
+
+// I will great the mist
+// courteously with a smile
+// i can do no more
 
 },{"./../js/haiku.js":1}]},{},[2]);
