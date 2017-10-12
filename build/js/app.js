@@ -17,6 +17,12 @@ var Haiku = exports.Haiku = function () {
   }
 
   _createClass(Haiku, [{
+    key: "inputFilter",
+    value: function inputFilter(input) {
+      input.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+      return input;
+    }
+  }, {
     key: "lineCheck",
     value: function lineCheck(poem) {
       var lines = poem.split("\n");
@@ -54,13 +60,6 @@ var Haiku = exports.Haiku = function () {
       words.forEach(function (word) {
         that.syllablesByVowels(word);
         count += that.countTotal;
-        // if (that.syllablesByVowels(word) == 0){
-        //   count = 1
-        //   count += that.countTotal;
-        // }else{
-        //   that.syllablesByVowels(word);
-        //   count += that.countTotal;
-        // }
       });
       return count;
     }
@@ -85,7 +84,6 @@ var Haiku = exports.Haiku = function () {
       for (var i = 0; i < letters.length - 1; i++) {
         if (letters[i].match(/[^aeiou]/gi) && letters[i + 1].match(/[^aeiou]/gi)) {
           consPairArray.push(letters[i] + letters[i + 1]);
-          //  that.countTotal += 2;
         }
       }
       if (that.countTotal === 0) {
@@ -111,20 +109,6 @@ var Haiku = exports.Haiku = function () {
 
   return Haiku;
 }();
-//   let letters = word.split("");
-//   for(var i = 0; i < letters.length-1; i++){
-//     if ()
-//     if (letters[i].match(/[aeiouy]/gi) && letters[i+1].match(/[aeiouy]/gi)){
-//       this.countTotal -= 1;
-//     }
-//   }
-// }
-
-//   let word = "otter";
-//
-// let doubleVowels = (word.match(/[aeiouy]{2}/gi) || []).length;
-//
-// this.countTotal -= doubleVowels;
 
 },{}],2:[function(require,module,exports){
 "use strict";
@@ -135,17 +119,19 @@ $(document).ready(function () {
   $("#check-poem").submit(function (e) {
     e.preventDefault();
 
-    var poemInput = $("#poem").val().toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+    var poemInput = $("#poem").val();
     var haiku = new _haiku.Haiku();
     var syllCount = [];
 
-    if (haiku.lineCheck(poemInput)) {
+    var filteredPoem = haiku.inputFilter(poemInput);
+
+    if (haiku.lineCheck(filteredPoem)) {
       $(".result").text("Your Haiku is three lines long");
     } else {
       $(".result").text("Your Haiku is not three lines long");
     }
 
-    if (haiku.lineCheck(poemInput)) {
+    if (haiku.lineCheck(filteredPoem)) {
       var lines = poemInput.split("\n");
       var line1 = haiku.lineCount(lines[0]);
       var line2 = haiku.lineCount(lines[1]);
@@ -160,13 +146,5 @@ $(document).ready(function () {
     }
   });
 });
-
-// An old silent pond
-// A frog jumps into the pond
-// Splash! Silence again
-
-// I will great the mist
-// courteously with a smile
-// i can do no more
 
 },{"./../js/haiku.js":1}]},{},[2]);

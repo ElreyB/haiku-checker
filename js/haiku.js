@@ -3,6 +3,11 @@ export class Haiku{
     this.countTotal = 0;
   }
 
+  inputFilter(input) {
+    input.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+    return input;
+  }
+
   lineCheck(poem){
     let lines = poem.split("\n");
     return lines.length === 3;
@@ -34,16 +39,8 @@ export class Haiku{
     let words = line.split(" ");
     let that = this;
     words.forEach(function(word){
-        that.syllablesByVowels(word);
-        count += that.countTotal;
-      // if (that.syllablesByVowels(word) == 0){
-      //   count = 1
-      //   count += that.countTotal;
-      // }else{
-      //   that.syllablesByVowels(word);
-      //   count += that.countTotal;
-      // }
-
+      that.syllablesByVowels(word);
+      count += that.countTotal;
     });
     return count;
   }
@@ -67,7 +64,6 @@ export class Haiku{
    for(var i = 0; i < letters.length-1; i++){
      if (letters[i].match(/[^aeiou]/gi) && letters[i+1].match(/[^aeiou]/gi)){
        consPairArray.push(letters[i] + letters[i +1]);
-      //  that.countTotal += 2;
      }
    }
    if (that.countTotal === 0) {
@@ -89,17 +85,3 @@ export class Haiku{
     }
   }
 }
-  //   let letters = word.split("");
-  //   for(var i = 0; i < letters.length-1; i++){
-  //     if ()
-  //     if (letters[i].match(/[aeiouy]/gi) && letters[i+1].match(/[aeiouy]/gi)){
-  //       this.countTotal -= 1;
-  //     }
-  //   }
-  // }
-
-//   let word = "otter";
-//
-// let doubleVowels = (word.match(/[aeiouy]{2}/gi) || []).length;
-//
-// this.countTotal -= doubleVowels;
