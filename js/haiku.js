@@ -50,7 +50,10 @@ export class Haiku{
 
   silenceCheck(word) {
     let letters = word.split("");
-    if (letters[letters.length-1] == "e") {
+    if (letters[letters.length-2 === "l"] && letters[letters.length-1 === "e"]) {
+      this.countTotal += 0;
+    }
+    else if (letters[letters.length-1] == "e" && letters[letters.length-2] !== "l") {
       this.countTotal -= 1;
       letters.pop();
     }
@@ -67,12 +70,13 @@ export class Haiku{
       //  that.countTotal += 2;
      }
    }
-
-   consPairArray.map(function(pair){
-     if (pair == ("sh") || pair == ("th") || pair == ("ph") || pair == ("ch") || pair == ("wh")) {
-       that.countTotal = 1;
-      }
-    });
+   if (that.countTotal === 0) {
+     consPairArray.map(function(pair){
+       if (["sh","th", "ph", "ch", "wh"].includes(pair)){
+         that.countTotal = 1;
+       }
+     });
+    }
   }
 
   doubleVowel(word) {

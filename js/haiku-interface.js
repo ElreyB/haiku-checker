@@ -22,6 +22,7 @@ $(document).ready(function(){
       syllCount.push(line1, line2, line3);
     }
 
+
     if (syllCount.toString() === [5, 7, 5].toString()) {
       $(".final-result").text("Horray!");
     } else {
