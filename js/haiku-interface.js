@@ -4,7 +4,7 @@ $(document).ready(function(){
   $("#check-poem").submit(function(e){
     e.preventDefault();
 
-    let poemInput = $("#poem").val();
+    let poemInput = $("#poem").val().toLowerCase();
     let haiku = new Haiku();
     let syllCount = [];
 
@@ -21,7 +21,6 @@ $(document).ready(function(){
       let line3 = haiku.lineCount(lines[2]);
       syllCount.push(line1, line2, line3);
     }
-
 
     if (syllCount.toString() === [5, 7, 5].toString()) {
       $(".final-result").text("Horray!");

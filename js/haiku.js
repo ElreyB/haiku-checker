@@ -83,9 +83,8 @@ export class Haiku{
     } else if (word.match(/[aeiouy]{2}/gi)){
       this.countTotal -= 1;
     }
-
   }
-
+}
   //   let letters = word.split("");
   //   for(var i = 0; i < letters.length-1; i++){
   //     if ()
@@ -100,4 +99,3 @@ export class Haiku{
 // let doubleVowels = (word.match(/[aeiouy]{2}/gi) || []).length;
 //
 // this.countTotal -= doubleVowels;
-}

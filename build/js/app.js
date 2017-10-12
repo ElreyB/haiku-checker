@@ -104,26 +104,24 @@ var Haiku = exports.Haiku = function () {
         this.countTotal -= 1;
       }
     }
-
-    //   let letters = word.split("");
-    //   for(var i = 0; i < letters.length-1; i++){
-    //     if ()
-    //     if (letters[i].match(/[aeiouy]/gi) && letters[i+1].match(/[aeiouy]/gi)){
-    //       this.countTotal -= 1;
-    //     }
-    //   }
-    // }
-
-    //   let word = "otter";
-    //
-    // let doubleVowels = (word.match(/[aeiouy]{2}/gi) || []).length;
-    //
-    // this.countTotal -= doubleVowels;
-
   }]);
 
   return Haiku;
 }();
+//   let letters = word.split("");
+//   for(var i = 0; i < letters.length-1; i++){
+//     if ()
+//     if (letters[i].match(/[aeiouy]/gi) && letters[i+1].match(/[aeiouy]/gi)){
+//       this.countTotal -= 1;
+//     }
+//   }
+// }
+
+//   let word = "otter";
+//
+// let doubleVowels = (word.match(/[aeiouy]{2}/gi) || []).length;
+//
+// this.countTotal -= doubleVowels;
 
 },{}],2:[function(require,module,exports){
 "use strict";
@@ -134,7 +132,7 @@ $(document).ready(function () {
   $("#check-poem").submit(function (e) {
     e.preventDefault();
 
-    var poemInput = $("#poem").val();
+    var poemInput = $("#poem").val().toLowerCase();
     var haiku = new _haiku.Haiku();
     var syllCount = [];
 
