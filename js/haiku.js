@@ -1,6 +1,6 @@
 export class Haiku{
   constructor(){
-    this.countTotal = 0;
+    this.syllableCount = 0;
   }
 
   inputFilter(input) {
@@ -14,24 +14,31 @@ export class Haiku{
   }
 
   syllablesByVowels(word){
-    this.countTotal = 0;
+    this.syllableCount = 0;
     this.vowelCount(word);
     this.silenceCheck(word);
     this.doubleVowel(word);
     this.doubleConsonant(word);
-    return this.countTotal;
+    return this.syllableCount;
   }
 
   vowelCount(word) {
     let letters = word.split("");
-    let vowels = 0;
+    let result = letters.reduce(function(accu, letter){
+      return letter.match(/[aeiouy]/gi) ? ++accu : accu
+    }, 0);
+    this.syllableCount += result;
+  }
 
-    letters.forEach(function(letter){
-      if (letter.match(/[aeiouy]/gi)) {
-        vowels += 1;
-      }
-    });
-    this.countTotal += vowels;
+
+    // let vowels = 0;
+    //
+    // letters.forEach(function(letter){
+    //   if (letter.match(/[aeiouy]/gi)) {
+    //     vowels += 1;
+    //   }
+    // });
+    // this.syllableCount += vowels;
   }
 
   lineCount(line){
@@ -40,7 +47,7 @@ export class Haiku{
     let that = this;
     words.forEach(function(word){
       that.syllablesByVowels(word);
-      count += that.countTotal;
+      count += that.syllableCount;
     });
     return count;
   }
@@ -48,10 +55,10 @@ export class Haiku{
   silenceCheck(word) {
     let letters = word.split("");
     if (letters[letters.length-2 === "l"] && letters[letters.length-1 === "e"]) {
-      this.countTotal += 0;
+      this.syllableCount += 0;
     }
     else if (letters[letters.length-1] == "e" && letters[letters.length-2] !== "l") {
-      this.countTotal -= 1;
+      this.syllableCount -= 1;
       letters.pop();
     }
   }
@@ -66,10 +73,10 @@ export class Haiku{
        consPairArray.push(letters[i] + letters[i +1]);
      }
    }
-   if (that.countTotal === 0) {
+   if (that.syllableCount === 0) {
      consPairArray.map(function(pair){
        if (["sh","th", "ph", "ch", "wh"].includes(pair)){
-         that.countTotal = 1;
+         that.syllableCount = 1;
        }
      });
     }
@@ -79,9 +86,9 @@ export class Haiku{
     if (word.match(/[aeiouy]{3}/gi)){
       let tripleVowels = word.match(/[aeiouy]{3}/gi);
       word = word.replace(tripleVowels, "");
-      this.countTotal -= 2;
+      this.syllableCount -= 2;
     } else if (word.match(/[aeiouy]{2}/gi)){
-      this.countTotal -= 1;
+      this.syllableCount -= 1;
     }
   }
 }
